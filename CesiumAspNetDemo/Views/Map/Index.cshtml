@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Minimal Cesium .Net Sample</title>
+    <link rel='icon' href='~/Static/img/favicon.ico' type='image/x-icon'/ >
+    <link rel="stylesheet" href="~/Static/Cesium/Widgets/widgets.css" />
+    <link rel="stylesheet" href="~/Static/css/map.css" />
+    <script type="text/javascript" src="~/Static/Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="~/Scripts/czinit.js"></script>
+    <script src="~/Static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var viewer = createViewer("viewer", "@Url.Content("~/Static")");
+            var scene = viewer.scene
+            var camera = viewer.camera
+            scene.globe.baseColor = Cesium.Color.WHITE;
+            scene.globe.enableLighting = false;
+            scene.globe.showWaterEffect = false;
+
+            // Prevent go to underground
+            camera.changed.addEventListener(
+            function () {
+                if (camera._suspendTerrainAdjustment && scene.mode === Cesium.SceneMode.SCENE3D) {
+                    camera._suspendTerrainAdjustment = false;
+                    camera._adjustHeightForTerrain();
+                }
+                });
+
+            //Load Json sample data
+            var geojson = "@Url.Content("~/Content/data.geojson")"
+            Cesium.GeoJsonDataSource.load(geojson, {
+            clampToGround: true
+            }).then(function (dataSource) {
+                viewer.dataSources.add(dataSource);
+                var entities = dataSource.entities.values;
+                viewer.zoomTo(entities)
+            });
+        };
+
+    </script>
+</head>
+<body>
+    <div id="viewer"></div>
+</body>
+</html>

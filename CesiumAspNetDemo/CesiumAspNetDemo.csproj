@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7BAEC175-20B8-4FE2-A754-EB6804611A58}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cesium</RootNamespace>
+    <AssemblyName>Cesium</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TypeScriptToolsVersion>3.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.4.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop, Version=1.0.168.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="UAParser, Version=3.1.43.0, Culture=neutral, PublicKeyToken=f7377bf021646069, processorArchitecture=MSIL">
+      <HintPath>..\packages\UAParser.3.1.43\lib\net45\UAParser.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Static\css\map.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Static\img\favicon.ico" />
+    <Content Include="Content\data.geojson" />
+    <Content Include="Static\Cesium\Assets\Images\bing_maps_credit.png" />
+    <Content Include="Static\Cesium\Assets\Images\cesium_credit.png" />
+    <Content Include="Static\Cesium\Assets\Images\google_earth_credit.png" />
+    <Content Include="Static\Cesium\Assets\Images\ion-credit.png" />
+    <Content Include="Static\Cesium\Assets\Textures\LensFlare\DirtMask.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\LensFlare\StarBurst.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\airfield.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\airport.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\alcohol-shop.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\america-football.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\art-gallery.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\bakery.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\bank.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\bar.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\baseball.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\basketball.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\beer.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\bicycle.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\building.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\bus.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\cafe.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\camera.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\campsite.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\car.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\cemetery.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\cesium.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\chemist.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\cinema.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\circle-stroked.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\circle.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\city.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\clothing-store.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\college.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\commercial.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\cricket.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\cross.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\dam.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\danger.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\disability.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\dog-park.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\embassy.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\emergency-telephone.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\entrance.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\farm.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\fast-food.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\ferry.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\fire-station.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\fuel.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\garden.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\gift.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\golf.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\grocery.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\hairdresser.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\harbor.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\heart.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\heliport.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\hospital.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\ice-cream.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\industrial.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\land-use.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\laundry.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\library.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\lighthouse.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\lodging.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\logging.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\london-underground.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\marker-stroked.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\marker.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\minefield.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\mobilephone.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\monument.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\museum.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\music.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\oil-well.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\park.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\park2.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\parking-garage.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\parking.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\pharmacy.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\pitch.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\place-of-worship.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\playground.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\police.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\polling-place.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\post.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\prison.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\rail-above.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\rail-light.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\rail-metro.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\rail-underground.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\rail.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\religious-christian.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\religious-jewish.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\religious-muslim.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\restaurant.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\roadblock.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\rocket.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\school.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\scooter.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\shop.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\skiing.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\slaughterhouse.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\soccer.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\square-stroked.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\square.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\star-stroked.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\star.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\suitcase.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\swimming.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\telephone.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\tennis.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\theatre.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\toilets.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\town-hall.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\town.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\triangle-stroked.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\triangle.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\village.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\warehouse.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\waste-basket.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\water.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\wetland.png" />
+    <Content Include="Static\Cesium\Assets\Textures\maki\zoo.png" />
+    <Content Include="Static\Cesium\Assets\Textures\moonSmall.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\0\0\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\0\1\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\0\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\0\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\1\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\1\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\2\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\2\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\3\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\1\3\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\0\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\0\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\0\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\0\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\1\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\1\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\1\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\1\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\2\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\2\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\2\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\2\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\3\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\3\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\3\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\3\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\4\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\4\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\4\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\4\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\5\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\5\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\5\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\5\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\6\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\6\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\6\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\6\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\7\0.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\7\1.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\7\2.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\2\7\3.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\NaturalEarthII\tilemapresource.xml" />
+    <Content Include="Static\Cesium\Assets\Textures\pin.svg" />
+    <Content Include="Static\Cesium\Assets\Textures\SkyBox\tycho2t3_80_mx.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\SkyBox\tycho2t3_80_my.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\SkyBox\tycho2t3_80_mz.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\SkyBox\tycho2t3_80_px.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\SkyBox\tycho2t3_80_py.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\SkyBox\tycho2t3_80_pz.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\waterNormals.jpg" />
+    <Content Include="Static\Cesium\Assets\Textures\waterNormalsSmall.jpg" />
+    <Content Include="Static\Cesium\Cesium.js" />
+    <Content Include="Static\Cesium\ThirdParty\google-earth-dbroot-parser.js" />
+    <Content Include="Static\Cesium\ThirdParty\Workers\deflate.js" />
+    <Content Include="Static\Cesium\ThirdParty\Workers\draco_decoder.js" />
+    <Content Include="Static\Cesium\ThirdParty\Workers\draco_wasm_wrapper.js" />
+    <Content Include="Static\Cesium\ThirdParty\Workers\inflate.js" />
+    <Content Include="Static\Cesium\Widgets\Animation\Animation.css" />
+    <Content Include="Static\Cesium\Widgets\Animation\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\BaseLayerPicker\BaseLayerPicker.css" />
+    <Content Include="Static\Cesium\Widgets\BaseLayerPicker\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\Cesium3DTilesInspector\Cesium3DTilesInspector.css" />
+    <Content Include="Static\Cesium\Widgets\CesiumInspector\CesiumInspector.css" />
+    <Content Include="Static\Cesium\Widgets\CesiumWidget\CesiumWidget.css" />
+    <Content Include="Static\Cesium\Widgets\CesiumWidget\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\FullscreenButton\FullscreenButton.css" />
+    <Content Include="Static\Cesium\Widgets\Geocoder\Geocoder.css" />
+    <Content Include="Static\Cesium\Widgets\Geocoder\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\bingAerial.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\bingAerialLabels.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\bingRoads.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\blueMarble.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\earthAtNight.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\esriNationalGeographic.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\esriWorldImagery.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\esriWorldStreetMap.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\mapboxSatellite.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\mapboxStreets.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\mapboxTerrain.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\mapQuestOpenStreetMap.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\naturalEarthII.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\openStreetMap.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\sentinel-2.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\stamenToner.png" />
+    <Content Include="Static\Cesium\Widgets\Images\ImageryProviders\stamenWatercolor.png" />
+    <Content Include="Static\Cesium\Widgets\Images\info-loading.gif" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\Mouse.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\MouseLeft.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\MouseMiddle.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\MouseRight.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\Touch.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\TouchDrag.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\TouchRotate.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\TouchTilt.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\NavigationHelp\TouchZoom.svg" />
+    <Content Include="Static\Cesium\Widgets\Images\TerrainProviders\CesiumWorldTerrain.png" />
+    <Content Include="Static\Cesium\Widgets\Images\TerrainProviders\Ellipsoid.png" />
+    <Content Include="Static\Cesium\Widgets\Images\TimelineIcons.png" />
+    <Content Include="Static\Cesium\Widgets\InfoBox\InfoBox.css" />
+    <Content Include="Static\Cesium\Widgets\InfoBox\InfoBoxDescription.css" />
+    <Content Include="Static\Cesium\Widgets\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\lighterShared.css" />
+    <Content Include="Static\Cesium\Widgets\NavigationHelpButton\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\NavigationHelpButton\NavigationHelpButton.css" />
+    <Content Include="Static\Cesium\Widgets\PerformanceWatchdog\PerformanceWatchdog.css" />
+    <Content Include="Static\Cesium\Widgets\ProjectionPicker\ProjectionPicker.css" />
+    <Content Include="Static\Cesium\Widgets\SceneModePicker\SceneModePicker.css" />
+    <Content Include="Static\Cesium\Widgets\SelectionIndicator\SelectionIndicator.css" />
+    <Content Include="Static\Cesium\Widgets\shared.css" />
+    <Content Include="Static\Cesium\Widgets\Timeline\lighter.css" />
+    <Content Include="Static\Cesium\Widgets\Timeline\Timeline.css" />
+    <Content Include="Static\Cesium\Widgets\Viewer\Viewer.css" />
+    <Content Include="Static\Cesium\Widgets\VRButton\VRButton.css" />
+    <Content Include="Static\Cesium\Widgets\widgets.css" />
+    <Content Include="Static\Cesium\Workers\cesiumWorkerBootstrapper.js" />
+    <Content Include="Static\Cesium\Workers\combineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createBoxGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createBoxOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCircleGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCircleOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCoplanarPolygonGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCoplanarPolygonOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCorridorGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCorridorOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCylinderGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createCylinderOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createEllipseGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createEllipseOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createEllipsoidGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createEllipsoidOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createFrustumGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createFrustumOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createGroundPolylineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPlaneGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPlaneOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPolygonGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPolygonOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPolylineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPolylineVolumeGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createPolylineVolumeOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createRectangleGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createRectangleOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createSimplePolylineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createSphereGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createSphereOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createVectorTileGeometries.js" />
+    <Content Include="Static\Cesium\Workers\createVectorTilePoints.js" />
+    <Content Include="Static\Cesium\Workers\createVectorTilePolygons.js" />
+    <Content Include="Static\Cesium\Workers\createVectorTilePolylines.js" />
+    <Content Include="Static\Cesium\Workers\createVerticesFromGoogleEarthEnterpriseBuffer.js" />
+    <Content Include="Static\Cesium\Workers\createVerticesFromHeightmap.js" />
+    <Content Include="Static\Cesium\Workers\createVerticesFromQuantizedTerrainMesh.js" />
+    <Content Include="Static\Cesium\Workers\createWallGeometry.js" />
+    <Content Include="Static\Cesium\Workers\createWallOutlineGeometry.js" />
+    <Content Include="Static\Cesium\Workers\decodeDraco.js" />
+    <Content Include="Static\Cesium\Workers\decodeGoogleEarthEnterprisePacket.js" />
+    <Content Include="Static\Cesium\Workers\transcodeCRNToDXT.js" />
+    <Content Include="Static\Cesium\Workers\transferTypedArrayTest.js" />
+    <Content Include="Static\Cesium\Workers\upsampleQuantizedTerrainMesh.js" />
+    <Content Include="Static\Cesium\Assets\approximateTerrainHeights.json" />
+    <Content Include="Static\Cesium\Assets\approximateTerrainHeightsPrecise.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_0.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_1.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_10.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_11.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_12.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_13.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_14.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_15.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_16.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_17.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_18.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_19.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_2.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_20.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_21.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_22.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_23.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_24.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_25.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_26.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_27.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_3.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_4.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_5.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_6.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_7.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_8.json" />
+    <Content Include="Static\Cesium\Assets\IAU2006_XYS\IAU2006_XYS_9.json" />
+    <Content Include="Static\Cesium\ThirdParty\draco_decoder.wasm" />
+    <Content Include="Scripts\czinit.js" />
+    <Content Include="Static\js\jquery-3.4.1.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\MapController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Map\Index.cshtml" />
+    <Content Include="Views\_Layout.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49641</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49641/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
